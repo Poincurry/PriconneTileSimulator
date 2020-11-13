@@ -16,24 +16,24 @@ Tile Simulator
 <form name="choicedata">
 <div class="plusbackground" id="tilechoice">
 <hr class="horizontalline">
-<input type="radio" id="tilech1" name="tile" value="tilech1">
+<input type="radio" id="tilech1" name="tile" value="1">
 <label for="tilech1">컬러 타일① <img class="withtext" src=".\tilesimulator\IB000132_01_rec.png">&nbsp;&nbsp;</label>
-<input type="radio" id="tilech2" name="tile" value="tilech2">
+<input type="radio" id="tilech2" name="tile" value="2">
 <label for="tilech2">컬러 타일② <img class="withtext" src=".\tilesimulator\IB000133_01_rec.png">&nbsp;&nbsp;</label>
-<input type="radio" id="tilech3" name="tile" value="tilech3">
+<input type="radio" id="tilech3" name="tile" value="3">
 <label for="tilech3">컬러 타일③ <img class="withtext" src=".\tilesimulator\IB000134_01_rec.png">&nbsp;&nbsp;</label>
-<input type="radio" id="tilech4" name="tile" value="tilech4">
+<input type="radio" id="tilech4" name="tile" value="4">
 <label for="tilech4">컬러 타일④ <img class="withtext" src=".\tilesimulator\IB000135_01_rec.png">&nbsp;&nbsp;</label>
 <br>
-<input type="radio" id="tilech5" name="tile" value="tilech5">
+<input type="radio" id="tilech5" name="tile" value="5">
 <label for="tilech5">컬러 타일⑤ <img class="withtext" src=".\tilesimulator\IB000136_01_rec.png">&nbsp;&nbsp;</label>
-<input type="radio" id="tilech6" name="tile" value="tilech6">
+<input type="radio" id="tilech6" name="tile" value="6">
 <label for="tilech6">컬러 타일⑥ <img class="withtext" src=".\tilesimulator\IB000137_01_rec.png">&nbsp;&nbsp;</label>
-<input type="radio" id="tilech7" name="tile" value="tilech7">
+<input type="radio" id="tilech7" name="tile" value="7">
 <label for="tilech7">컬러 타일⑦ <img class="withtext" src=".\tilesimulator\IB000138_01_rec.png">&nbsp;&nbsp;</label>
-<input type="radio" id="tilech8" name="tile" value="tilech8">
+<input type="radio" id="tilech8" name="tile" value="8">
 <label for="tilech8">컬러 타일⑧ <img class="withtext" src=".\tilesimulator\IB000139_01_rec.png">&nbsp;&nbsp;</label>
-<input type="radio" id="tilech0" name="tile" value="tilech0" checked>
+<input type="radio" id="tilech0" name="tile" value="0" checked>
 <label for="tilech0">없음</label>
 </div>
 <div class="plusbackground" id="bgchoice">
@@ -59,10 +59,15 @@ Tile Simulator
 <img class="withtext" src=".\tilesimulator\IB000138_01_rec.png"> <input type="text" class="tilenumber" id="count7" value="0" disabled />
 <img class="withtext" src=".\tilesimulator\IB000139_01_rec.png"> <input type="text" class="tilenumber" id="count8" value="0" disabled />
 <span>총 </span><input type="text" class="tilenumber" id="counttotal" value="0" disabled /><span> / 100</span>
-&nbsp;&nbsp <input type="button" id="importbutton" value="리셋" onclick="resettile()">
-<hr class="horizontalline">
+&nbsp;&nbsp <input type="button" class="button" id="backbutton" value="뒤로" onclick="backtile()">
+&nbsp;&nbsp <input type="button" class="button" id="resetbutton" value="리셋" onclick="resettile()">
 </div>
-
+<div class="plusbackground" id="saveload">
+<hr class="horizontalline">
+<span> &nbsp;&nbsp 불러오기 : </span> <input type="text" id="loadname" disabled><input type="file" class="button" id="loadbutton" accept=".txt" onchange="showname(this.files)">
+<input type="button" class="button" id="savebutton" value="확인" onclick="loaddata(loadbutton.files)"><br>
+<span> &nbsp;&nbsp 저장 : </span> <input type="button" class="button" id="savebutton" value="확인" onclick="savedata()">
+</div>
 <script src="./tilesimulator\bgchange.js"></script>
 <script src="./tilesimulator\tilechange.js"></script>
 </body>
