@@ -38,6 +38,10 @@ label {
 	vertical-align: middle;
 }
 
+.button {
+	width: 80px;
+}
+
 #mainimg {
 	min-width: 1040px;
 	min-height: 532px;
