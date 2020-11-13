@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<html lang="ko">
+<head>
+<title>
+Tile Simulator
+</title>
+<link rel="stylesheet" type="text/css" href="./tilesimulator/tilesim.css">
+</head>
+
+<body>
+<div class="plusbackground" id="mainimg">
+<img id="canvas" src=".\tilesimulator\CanvasImage.png" />
+<img id="bgleft" src=".\tilesimulator\RoomGridFloor.png" width="512" height="512" /><img id="bgright" src=".\tilesimulator\RoomGridFloor.png" width="512" height="512" />
+</div>
+<form name="choicedata">
+<div class="plusbackground" id="tilechoice">
+<hr class="horizontalline">
+<input type="radio" id="tilech1" name="tile" value="tilech1">
+<label for="tilech1">컬러 타일① <img src=".\tilesimulator\IB000132_01_rec.png">&nbsp;&nbsp;</label>
+<input type="radio" id="tilech2" name="tile" value="tilech2">
+<label for="tilech2">컬러 타일② <img src=".\tilesimulator\IB000133_01_rec.png">&nbsp;&nbsp;</label>
+<input type="radio" id="tilech3" name="tile" value="tilech3">
+<label for="tilech3">컬러 타일③ <img src=".\tilesimulator\IB000134_01_rec.png">&nbsp;&nbsp;</label>
+<input type="radio" id="tilech4" name="tile" value="tilech4">
+<label for="tilech4">컬러 타일④ <img src=".\tilesimulator\IB000135_01_rec.png">&nbsp;&nbsp;</label>
+<br>
+<input type="radio" id="tilech5" name="tile" value="tilech5">
+<label for="tilech5">컬러 타일⑤ <img src=".\tilesimulator\IB000136_01_rec.png">&nbsp;&nbsp;</label>
+<input type="radio" id="tilech6" name="tile" value="tilech6">
+<label for="tilech6">컬러 타일⑥ <img src=".\tilesimulator\IB000137_01_rec.png">&nbsp;&nbsp;</label>
+<input type="radio" id="tilech7" name="tile" value="tilech7">
+<label for="tilech7">컬러 타일⑦ <img src=".\tilesimulator\IB000138_01_rec.png">&nbsp;&nbsp;</label>
+<input type="radio" id="tilech8" name="tile" value="tilech8">
+<label for="tilech8">컬러 타일⑧ <img src=".\tilesimulator\IB000139_01_rec.png">&nbsp;&nbsp;</label>
+<input type="radio" id="tilech0" name="tile" value="tilech0" checked>
+<label for="tilech0">없음</label>
+ </div>
+ <div class="plusbackground" id="bgchoice">
+ <hr class="horizontalline">
+ <input type="radio" id="floorch1" name="floor" value="floorch1" onclick="floorsetting(this.value)">
+ <label for="tilech1">핑크색 바닥 <img src=".\tilesimulator\IB000050_01_rec.png">&nbsp;&nbsp;</label>
+ <input type="radio" id="floorch2" name="floor" value="floorch2" onclick="floorsetting(this.value)">
+ <label for="tilech2">흰색 바닥 <img src=".\tilesimulator\IB000062_01_rec.png">&nbsp;&nbsp;</label>
+ <input type="radio" id="floorch3" name="floor" value="floorch3" onclick="floorsetting(this.value)">
+ <label for="tilech3">검은색 바닥 <img src=".\tilesimulator\IB000076_01_rec.png">&nbsp;&nbsp;</label>
+ <input type="radio" id="floorch0" name="floor" value="floorch0" onclick="floorsetting(this.value)" checked>
+ <label for="tilech0">없음</label>
+ </div>
+ </form>
+ <div class="plusbackground" id="tilecount">
+ <hr class="horizontalline">
+&nbsp;&nbsp; 타일 수 : <img src=".\tilesimulator\IB000132_01_rec.png"> <input type="text" class="tilenumber" value="0" disabled />
+</div>
+<script src="./tilesimulator\bgchange.js"></script>
+<script>
+var imgstore = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+var tileexist = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+
+// 이하 타일 선택하는 부분
+var xPosition = 0;
+var yPosition = 0;
+clickscreen = document.querySelector('#canvas');
+clickscreen.addEventListener("click", ifClickPosition, false);
+function ifClickPosition(e) {
+    xPosition = e.clientX;
+    yPosition = e.clientY;
+	var xymatrix = xytomat(xPosition, yPosition);
+	console.log(xymatrix[0]);
+	console.log(xymatrix[1]);
+	// x,y 좌표 획득해서 사각형 내 위치 확인
+	if (xymatrix[0] < 0 || xymatrix[0] > 15) {
+	} else if (xymatrix[1] < 0 || xymatrix[1] > 15) {
+	} else {
+	// x,y 좌표가 사각형 바깥일 경우 함수 탈출
+	const tilech = document.querySelector('input[name="tile"]:checked').value;
+	console.log(tilech);
+	// 클릭 당시 타일 종류 확인
+	if (tileexist[xymatrix[0]][xymatrix[1]]) {
+	imgstore[xymatrix[0]][xymatrix[1]].parentNode.removeChild(imgstore[xymatrix[0]][xymatrix[1]]);
+	}
+	// 기존 타일 제거
+	if (tilech == 'tilech0') {
+	tileexist[xymatrix[0]][xymatrix[1]] = 0;
+	} else {
+	imgstore[xymatrix[0]][xymatrix[1]] = document.createElement('img');
+	if (tilech == 'tilech1') {
+	imgstore[xymatrix[0]][xymatrix[1]].src = './tilesimulator/IB000132_01.png';
+	} else if (tilech == 'tilech2') {
+	imgstore[xymatrix[0]][xymatrix[1]].src = './tilesimulator/IB000133_01.png';
+	} else if (tilech == 'tilech3') {
+	imgstore[xymatrix[0]][xymatrix[1]].src = './tilesimulator/IB000134_01.png';
+	} else if (tilech == 'tilech4') {
+	imgstore[xymatrix[0]][xymatrix[1]].src = './tilesimulator/IB000135_01.png';
+	} else if (tilech == 'tilech5') {
+	imgstore[xymatrix[0]][xymatrix[1]].src = './tilesimulator/IB000136_01.png';
+	} else if (tilech == 'tilech6') {
+	imgstore[xymatrix[0]][xymatrix[1]].src = './tilesimulator/IB000137_01.png';
+	} else if (tilech == 'tilech7') {
+	imgstore[xymatrix[0]][xymatrix[1]].src = './tilesimulator/IB000138_01.png';
+	} else if (tilech == 'tilech8') {
+	imgstore[xymatrix[0]][xymatrix[1]].src = './tilesimulator/IB000139_01.png';
+	}
+	imgstore[xymatrix[0]][xymatrix[1]].style.position = 'absolute';
+	imgstore[xymatrix[0]][xymatrix[1]].style.left = 32 * xymatrix[0] + 32 * xymatrix[1] + 8 + 'px';
+	imgstore[xymatrix[0]][xymatrix[1]].style.top = -16 * xymatrix[0] + 16 * xymatrix[1] + 248 + 'px';
+	imgstore[xymatrix[0]][xymatrix[1]].style.zIndex = 4;
+	document.body.appendChild(imgstore[xymatrix[0]][xymatrix[1]]);
+	tileexist[xymatrix[0]][xymatrix[1]] = 1;
+	}
+	}
+	}
+// 좌표에 타일 부여
+function xytomat(xPosition, yPosition) {
+	const xPosition2 = (xPosition - 519.5) / 2;
+	const yPosition2 = -(yPosition - 263.5);
+	const xPosition3 = Math.sqrt(2) * xPosition2 / 2 + Math.sqrt(2) * yPosition2 / 2;
+	const yPosition3 = -Math.sqrt(2) * xPosition2 / 2 + Math.sqrt(2) * yPosition2 / 2;
+	const xPosition4 = Math.ceil(xPosition3 / (16 * Math.sqrt(2))) + 7;
+	const yPosition4 = -Math.ceil(yPosition3 / (16 * Math.sqrt(2))) + 8;
+	return [xPosition4,yPosition4];
+}
+// x,y 좌표를 사각형 내 위치로 변환하는 함수
+
+</script>
+</body>
+</html>
