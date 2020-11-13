@@ -1,0 +1,39 @@
+
+.choiceimg {
+	display: inline-block;
+	margin-top: 5px;
+}
+
+.vertical-align {
+	display: table-cell;
+    vertical-align: middle;
+}
+
+.plusbackground {
+	background-color: #CCCCCC;
+}
+
+.horizontalline {
+	margin : 0px;
+}
+
+.tilenumber {
+	height: 20px;
+	width: 20px;
+}
+
+#mainimg {
+	min-width: 1040px;
+	min-height: 532px;
+}
+
+#canvas {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	z-index: 5;
+}
+
+#bgright {
+	transform: scaleX(-1);
+}
