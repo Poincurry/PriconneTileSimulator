@@ -1,3 +1,14 @@
+span {
+	vertical-align: middle;
+}
+
+input {
+	vertical-align: middle;
+}
+
+label {
+	vertical-align: middle;
+}
 
 .choiceimg {
 	display: inline-block;
@@ -11,6 +22,7 @@
 
 .plusbackground {
 	background-color: #CCCCCC;
+	padding-bottom: 2px;
 }
 
 .horizontalline {
@@ -19,7 +31,11 @@
 
 .tilenumber {
 	height: 20px;
-	width: 20px;
+	width: 25px;
+}
+
+.withtext {
+	vertical-align: middle;
 }
 
 #mainimg {
