@@ -42,7 +42,7 @@ function situatetile(coorX, coorY, tilecolor) {
 	}
 	// 기존 타일 제거
 	if (tilecolor == 0) {
-		tileexist[coorX][coorY] = tilecolor;
+		tileexist[coorX][coorY] = Number(tilecolor);
 	} else if (tilecolor == 9) {
 		tileexist[coorX][coorY] = 0;
 	} else {
@@ -64,7 +64,7 @@ function situatetile(coorX, coorY, tilecolor) {
 		} else if (tilecolor == 8) {
 			imgstore[coorX][coorY].src = './tilesimulator/IB000139_01.png';
 		}
-		tileexist[coorX][coorY] = tilecolor;
+		tileexist[coorX][coorY] = Number(tilecolor);
 		imgstore[coorX][coorY].style.position = 'absolute';
 		imgstore[coorX][coorY].style.left = 32 * coorX + 32 * coorY + 8 + 'px';
 		imgstore[coorX][coorY].style.top = -16 * coorX + 16 * coorY + 248 + 'px';
